@@ -1,0 +1,126 @@
+{
+  "layer": "top",
+  "position": "top",
+  "margin": "3 10 0 10",
+
+  // Các module bên trái
+  "modules-left": [
+    "custom/archlogo",
+    "sway/workspaces",
+    "sway/window"
+  ],
+
+  // Các module ở giữa
+  "modules-center": [
+    "clock",
+    "custom/media-player"
+  ],
+
+  // Các module bên phải
+  "modules-right": [
+    "tray",
+    "cpu",
+    "network",
+    "memory",
+    "backlight",
+    "pulseaudio",
+    "battery",
+    "custom/power"
+  ],
+  "sway/window": {
+    "swap-icon-label" :true
+  },
+  
+  "icons": {
+    "format": "{ 󰣇 }" 
+  },
+  "clock": {
+    "format": "󰥔 :{:%H:%M:%S}",
+    "tooltip-format": "<big>{:%A, %d %B %Y}</big>",
+    "interval": 1
+  },
+
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-icons": ["", "", "", "", ""],
+    "format-alt": "{time} {icon}",
+    "format-charging": "⚡ {capacity}%",
+    "format-plugged": " {capacity}%",
+    "interval": 10
+  },
+
+  "network": {
+    "format-wifi": " {essid} ({signalStrength}%)",
+    "format-ethernet": "󱚽  {ifname}",
+    "format-disconnected": "⚠ Disconnected",
+    "tooltip-format": "{ifname} via {gwaddr} ({ipaddr})",
+    "interval": 5
+  },
+
+  "pulseaudio": {
+    "format": " {volume}%",
+    "format-muted": " muted",
+    "scroll-step": 5,
+    "on-click": "pavucontrol"
+  },
+  "custom/archlogo": {
+    "format": " 󰣇 ",
+    "tooltip": false,
+    "on-click": "rofi -show drun" // Hoặc lệnh launcher khác
+  },  
+  "cpu": {
+    "format": " : {usage}%",
+    "interval": 3
+  },
+
+  "memory": {
+    "format": " : {used:0.1f}G",
+    "interval": 5
+  },
+
+  "disk": {
+    "format": " {free} free",
+    "path": "/",
+    "interval": 60
+  },
+
+  "temperature": {
+    "critical-threshold": 80,
+    "format": " {temperatureC}°C",
+    "interval": 10
+  },
+
+  "backlight": {
+    "format": " {percent}%"
+  },
+
+  "tray": {
+    "spacing": 10
+  },
+
+  "window": {
+    "max-length": 50
+  },
+
+  "workspaces": {
+    "disable-scroll": false,
+    "all-outputs": true,
+    "on-click": "activate",
+    "format": "{name}"
+  },
+  "custom/media-player": {
+        "format": "{}",
+        "return-type": "json",
+        "exec": "~/.config/waybar/scripts/media-player-waybar.py --enable-logging",
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl next",
+        "on-scroll-up": "playerctl volume 0.05+",
+        "on-scroll-down": "playerctl volume 0.05-",
+        "tooltip": true
+    },
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": false,
+    "on-click": "/home/fuzzy/.config/rofi/scripts/powermenu_t5"
+  }
+}.
